@@ -1,41 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width,
-                 initial-scale=1,
-                 shrink-to-fit=no">
-    <title>
-        load data from json file
-        into a bootstrap table
-    </title>
+    <title>Quotes</title>
+    <style>
+        .quote {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
 
-    <!-- Include Bootstrap for styling -->
-    <link rel="stylesheet"
-          href=
-                  "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        .quote p {
+            margin: 0;
+        }
 
-    <!-- Include the Bootstrap Table CSS
-    for the table -->
-    <link rel="stylesheet"
-          href=
-                  "https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+        .quote .author {
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
+<div id="quotes-container"></div>
+
 <script>
-    fetch('/data')
+    fetch('/quotes/json')
         .then(response => response.json())
         .then(data => {
-            // Access the JSON data and update the HTML as desired
-            document.getElementById('myData').textContent = JSON.stringify(data);
+            const quotesContainer = document.getElementById('quotes-container');
+
+            data.forEach(quote => {
+                const quoteElement = document.createElement('div');
+                quoteElement.classList.add('quote');
+
+                const quoteText = document.createElement('p');
+                quoteText.innerText = quote.quote;
+
+                const quoteAuthor = document.createElement('p');
+                quoteAuthor.classList.add('author');
+                quoteAuthor.innerText = `- ${quote.author}`;
+
+                quoteElement.appendChild(quoteText);
+                quoteElement.appendChild(quoteAuthor);
+
+                quotesContainer.appendChild(quoteElement);
+            });
         })
         .catch(error => {
-            console.error('Error loading JSON data:', error);
+            console.error('Error fetching quotes:', error);
         });
 </script>
-
-<h1>Clco</h1>
-<p>JSON Data: <span id="myData"></span></p>
 </body>
 </html>
