@@ -75,8 +75,6 @@ public class TextToJsonConverter {
                 System.err.println("Invalid quote format: " + line);
             }
         }
-        var x = quotes.stream().map(e -> e.getQuote()).map(e -> e.length()).max(Comparator.comparing(i -> i));
-        System.out.println("max lenght = "+ x.get());
         return quotes;
     }
 }

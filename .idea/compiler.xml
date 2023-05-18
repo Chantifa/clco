@@ -11,7 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="clco" target="19" />
-      <module name="src" target="19" />
+      <module name="src" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
