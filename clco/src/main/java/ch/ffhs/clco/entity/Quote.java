@@ -2,15 +2,19 @@ package ch.ffhs.clco.entity;
 
 import jakarta.persistence.*;
 
-@Table (name= "quote")
+@Table (name= "quote", schema = "clco")
 @Entity
 public class Quote {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "quote_generator", sequenceName = "quote_seq", allocationSize = 1)
     private Integer id;
 
+    @Column(length = 400)
     private String quote;
+
+
     private String author;
 
     // Default constructor (required by JPA)

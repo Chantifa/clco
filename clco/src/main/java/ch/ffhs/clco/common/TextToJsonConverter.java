@@ -13,7 +13,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 
 @Component
 public class TextToJsonConverter {
@@ -27,8 +29,8 @@ public class TextToJsonConverter {
         this.quoteRepository = quoteRepository;
     }
 
-
-          public void convertTextToJson() {
+    @PostConstruct
+    public void convertTextToJson() {
         try {
             // Read text file from resources folder
             ClassPathResource resource = new ClassPathResource("quotes.txt");
@@ -74,7 +76,8 @@ public class TextToJsonConverter {
                 System.err.println("Invalid quote format: " + line);
             }
         }
-
+        var x = quotes.stream().map(e -> e.getQuote()).map(e -> e.length()).max(Comparator.comparing(i -> i));
+        System.out.println("max lenght = "+ x.get());
         return quotes;
     }
 }
