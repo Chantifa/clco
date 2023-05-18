@@ -27,14 +27,13 @@ public class TextToJsonConverter {
         this.quoteRepository = quoteRepository;
     }
 
-    @PostConstruct
-    public void convertTextToJson() {
+
+          public void convertTextToJson() {
         try {
             // Read text file from resources folder
             ClassPathResource resource = new ClassPathResource("quotes.txt");
             byte[] fileData = FileCopyUtils.copyToByteArray(resource.getInputStream());
             String quotesText = new String(fileData).trim();
-            System.out.println(quotesText);
 
             // Process the quotes and authors
             List<Quote> quotes = processQuotes(quotesText);
