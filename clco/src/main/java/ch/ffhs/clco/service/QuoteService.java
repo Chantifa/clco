@@ -1,7 +1,9 @@
 package ch.ffhs.clco.service;
 
+import ch.ffhs.clco.common.TextToJsonConverter;
 import ch.ffhs.clco.entity.Quote;
 import ch.ffhs.clco.persistence.QuoteRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +19,10 @@ public class QuoteService {
         this.quoteRepository = quoteRepository;
     }
 
-    public void saveQuote(Quote quote) {
-        quoteRepository.save(quote);
-    }
-
-    public void saveAllQuotes(List<Quote> quotes) {
-        quoteRepository.saveAll(quotes);
+    public List<Quote> getAllQuotes(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        // TextToJsonConverter = new TextToJsonConverter(objectMapper,quoteRepository);
+        // textToJsonConverter.convertTextToJson();
+        return quoteRepository.findAll();
     }
 }

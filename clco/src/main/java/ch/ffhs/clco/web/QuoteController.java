@@ -3,20 +3,15 @@ package ch.ffhs.clco.web;
 import ch.ffhs.clco.entity.Quote;
 import ch.ffhs.clco.persistence.QuoteRepository;
 import ch.ffhs.clco.service.QuoteService;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.List;
 
-@RestController
-@CrossOrigin(origins = "*")
+@Controller
 @RequestMapping("/quotes")
 public class QuoteController {
 
@@ -25,21 +20,31 @@ public class QuoteController {
     @Autowired
     QuoteRepository quoteRepository;
 
-    @RequestMapping
-    public String home(Model model) {
-        model.addAttribute("quotes", quoteRepository.findAll());
-        return "quotes";
-    }
-
 
     @Autowired
     public QuoteController(QuoteService quoteService) {
         this.quoteService = quoteService;
     }
 
+
+    @RequestMapping("/")
+    public ModelAndView home(ModelAndView model) {
+        List<Quote> quotes = quoteService.getAllQuotes();
+        model.setViewName("quotes");
+        model.addObject("quotes", quotes);
+        return model;
+    }
+
 /*
     @GetMapping
-    public String getQuotes() {
+    public List<Quote> getQuotes() {
+        List<Quote> quotes = quoteService.getAllQuotes();
+        return quotes;
+    }/
+
+    /*
+    @GetMapping("/json")
+    public String getAllQuotes() {
         try {
             // Read JSON file from resources folder
             File jsonFile = new File("quotes.json");
@@ -49,7 +54,6 @@ public class QuoteController {
             System.err.println("Error reading JSON file: " + e.getMessage());
             return "index";
         }
-    }
-    */
+    }*/
 }
 

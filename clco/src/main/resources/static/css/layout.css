@@ -1,10 +1,15 @@
-.container {
-    width: 600px;
-    margin: auto;
+.error{
+    color: red;
+    font-size: 15px;
 }
-.remember-me {
-    text-align: center;
+.user{
+    color: blue;
+    font-size: 15px;
 }
-.btn-login {
-    width: 100%;
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
 }
