@@ -21,8 +21,8 @@ public class QuoteService {
 
     public List<Quote> getAllQuotes(){
         ObjectMapper objectMapper = new ObjectMapper();
-        // TextToJsonConverter = new TextToJsonConverter(objectMapper,quoteRepository);
-        // textToJsonConverter.convertTextToJson();
+        TextToJsonConverter textToJsonConverter = new TextToJsonConverter(objectMapper,quoteRepository);
+        textToJsonConverter.convertTextToJson();
         return quoteRepository.findAll();
     }
 }

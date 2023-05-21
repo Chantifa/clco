@@ -5,16 +5,12 @@
     <link rel="stylesheet" th:href="@{/css/layout.css}"/>
 </head>
 <body>
-<h1 th:text="#{quotes}">Quotes</h1>
-<table id="quotesTable" th:action="@{/quotes}" >
-    <thead>
-    <tr>
-        <th th:text="#{quote.author}">Author</th>
-        <th th:text="#{quote.quote}">Quote</th>
+<h1 th:text>Quotes</h1>
+<table class="quotes" th:action="@{/quotes}" >
+    <tr th:each="quote : ${quotes}">
+        <td th:text="${quote.author}">Author</td>
+        <td th:text="${quote.quote}">Quote</td>
     </tr>
-    </thead>
-    <tbody>
-    </tbody>
 </table>
 </body>
 </html>
