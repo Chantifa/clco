@@ -1,0 +1,17 @@
+spring:
+  thymeleaf:
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+  jpa:
+    generate-ddl: true
+    show-sql: true
+  hibernate:
+      ddl-auto: create-drop
+  datasource:
+      url: jdbc:postgresql://clcoazure.postgres.database.azure.com:5432/clco?sslmode=require
+      username: chantifa@clcoazure
+      password: Postgres1234
+  sql:
+    init:
+      mode: always
