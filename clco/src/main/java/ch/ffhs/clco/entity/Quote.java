@@ -8,13 +8,12 @@ public class Quote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "quote_generator", sequenceName = "quote_seq", allocationSize = 1)
     private Integer id;
 
-    @Column(length = 400)
+    @Column(length = 500)
     private String quote;
 
-
+    @Column()
     private String author;
 
     // Default constructor (required by JPA)
