@@ -8,6 +8,8 @@ public class Quote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "quote_generator", sequenceName = "quote_seq", allocationSize = 1)
+
     private Integer id;
 
     @Column(length = 500)

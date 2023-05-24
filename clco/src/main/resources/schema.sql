@@ -7,3 +7,8 @@ CREATE TABLE clco.quote (
 );
 
 ALTER TABLE clco.quote OWNER TO chantifa;
+
+create sequence clco.quote_seq
+    as integer;
+
+alter sequence clco.quote_seq owner to chantifa;
