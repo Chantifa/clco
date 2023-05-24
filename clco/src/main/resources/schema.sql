@@ -1,14 +1,14 @@
 DROP TABLE IF EXISTS quote;
 
-CREATE TABLE clco.quote (
+CREATE TABLE public.quote (
                             id     INTEGER NOT NULL CONSTRAINT quote_pk PRIMARY KEY,
                             author VARCHAR(255),
                             "quote"  VARCHAR(500)
 );
 
-ALTER TABLE clco.quote OWNER TO chantifa;
+ALTER TABLE public.quote OWNER TO chantifa;
 
-create sequence clco.quote_seq
+create sequence public.quote_seq
     as integer;
 
-alter sequence clco.quote_seq owner to chantifa;
+alter sequence public.quote_seq owner to chantifa;

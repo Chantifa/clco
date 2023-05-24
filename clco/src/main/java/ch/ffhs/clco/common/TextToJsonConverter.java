@@ -18,12 +18,10 @@ import java.util.List;
 @Component
 public class TextToJsonConverter {
 
-    private final ObjectMapper objectMapper;
-    private final QuoteRepository quoteRepository;
+       private final QuoteRepository quoteRepository;
 
     @Autowired
-    public TextToJsonConverter(ObjectMapper objectMapper, QuoteRepository quoteRepository) {
-        this.objectMapper = objectMapper;
+    public TextToJsonConverter(QuoteRepository quoteRepository) {
         this.quoteRepository = quoteRepository;
     }
 
@@ -39,6 +37,7 @@ public class TextToJsonConverter {
             List<Quote> quotes = processQuotes(quotesText);
 
             // Convert quotes to JSON
+            ObjectMapper objectMapper = new ObjectMapper();
             String json = objectMapper.writeValueAsString(quotes);
 
             // Save JSON file in resources folder

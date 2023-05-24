@@ -3,8 +3,8 @@ package ch.ffhs.clco.service;
 import ch.ffhs.clco.common.TextToJsonConverter;
 import ch.ffhs.clco.entity.Quote;
 import ch.ffhs.clco.persistence.QuoteRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,10 +19,9 @@ public class QuoteService {
         this.quoteRepository = quoteRepository;
     }
 
-    public List<Quote> getAllQuotes(){
-        ObjectMapper objectMapper = new ObjectMapper();
-        TextToJsonConverter textToJsonConverter = new TextToJsonConverter(objectMapper,quoteRepository);
+    public List<Quote> getAllQuotes() {
+        TextToJsonConverter textToJsonConverter = new TextToJsonConverter(quoteRepository);
         textToJsonConverter.convertTextToJson();
-        return quoteRepository.findAll();
+        return quoteRepository.findAll(Example.of(new Quote()));
     }
 }

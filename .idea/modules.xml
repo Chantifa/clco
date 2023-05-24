@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/clco/src.iml" filepath="$PROJECT_DIR$/clco/src.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clco/clco.iml" filepath="$PROJECT_DIR$/clco/clco.iml" />
     </modules>
   </component>
 </project>

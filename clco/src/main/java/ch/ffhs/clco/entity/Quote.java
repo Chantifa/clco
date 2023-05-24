@@ -2,15 +2,12 @@ package ch.ffhs.clco.entity;
 
 import jakarta.persistence.*;
 
-@Table(name = "quote", schema = "clco", indexes = {
-        @Index(name = "idx_quote_id", columnList = "id")
-})
+@Table(name = "quote", schema = "public")
 @Entity
 public class Quote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "quote_generator", sequenceName = "quote_seq", allocationSize = 1)
     private Integer id;
 
     @Column(length = 500)
@@ -27,6 +24,7 @@ public class Quote {
         this.quote = quote;
         this.author = author;
     }
+
 
     // Getters and setters
 
