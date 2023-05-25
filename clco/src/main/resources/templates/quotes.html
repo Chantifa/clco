@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Quotes Table</title>
+    <title>Quotes</title>
+    <meta charset="UTF-8">
+    <!-- Add any necessary CSS or external dependencies here -->
     <link rel="stylesheet" th:href="@{/css/layout.css}"/>
 </head>
 <body>
-<h1 th:text>Quotes</h1>
-<table class="quotes" th:action="@{/quotes}" >
-    <tr th:each="quote : ${quotes}">
-        <td th:text="${quote.author}">Author</td>
-        <td th:text="${quote.quote}">Quote</td>
-    </tr>
-</table>
+<h1>Random Quote</h1>
+<p id="quoteQuote" th:text="${quotes.quote}"></p>
+<p>- <span id="quoteAuthor" th:text="${quotes.author}"></span></p>
+
+<button id="newQuoteButton">Get New Quote</button>
+
+<script th:inline="javascript">
+    document.getElementById("newQuoteButton").addEventListener("click", function() {
+        getNewQuote();
+    });
+
+    function getNewQuote() {
+        fetch('/newquotes')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("quoteQuote").textContent = data.quote;
+                document.getElementById("quoteAuthor").textContent = data.author;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+</script>
+
 </body>
 </html>

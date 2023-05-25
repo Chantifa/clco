@@ -1,15 +1,48 @@
-.error{
-    color: red;
-    font-size: 15px;
-}
-.quotes{
-    color: blue;
-    font-size: 15px;
-}
-table {
-    border-collapse: collapse;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
 }
 
-table, th, td {
-    border: 1px solid black;
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin: 10px;
+    padding: 10px 0;
+}
+
+#quoteText {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#quoteAuthor {
+    font-style: italic;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
 }
